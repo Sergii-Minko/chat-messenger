@@ -76,7 +76,8 @@ const ChatWidget = () => {
     if (!inputText.trim() || !conversationId) return;
 
     try {
-      const res = await fetch(`${API_URL}/api/messages`, {
+      // Відправляємо повідомлення на сервер
+      await fetch(`${API_URL}/api/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -86,9 +87,11 @@ const ChatWidget = () => {
           sender_id: null,
         }),
       });
-      const newMsg = await res.json();
-      setMessages((prev) => [...prev, newMsg]);
-      setInputText('');
+      
+      // Ми НЕ додаємо newMsg у setMessages тут, 
+      // бо воно прийде до нас через socket.on('new_message')
+      
+      setInputText(''); // Просто очищуємо поле вводу
     } catch (err) {
       console.error('Send error:', err);
     }
