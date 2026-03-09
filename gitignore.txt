@@ -1,0 +1,30 @@
+# Залежності
+node_modules/
+dist/
+build/
+
+# Секрети та налаштування (КРИТИЧНО)
+.env
+.env.local
+.env.*.local
+
+# Системні файли
+.DS_Store
+Thumbs.db
+
+# Налаштування IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Тимчасові файли
+.cache/
+tmp/
