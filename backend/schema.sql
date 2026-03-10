@@ -32,3 +32,14 @@ CREATE TABLE IF NOT EXISTS messages (
 
 -- Індекс для сортування повідомлень
 CREATE INDEX IF NOT EXISTS idx_messages_conversation ON messages(conversation_id, created_at);
+
+-- Таблиця адміністраторів
+CREATE TABLE IF NOT EXISTS admins (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Індекс для швидкого пошуку користувача
+CREATE INDEX IF NOT EXISTS idx_admins_username ON admins(username);
